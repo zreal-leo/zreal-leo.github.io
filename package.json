@@ -1,0 +1,24 @@
+{
+  "name": "zreal-leo.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "docsify serve",
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zreal-leo/zreal-leo.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zreal-leo/zreal-leo.github.io/issues"
+  },
+  "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme"
+}
