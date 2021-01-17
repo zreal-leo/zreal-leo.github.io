@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/zreal-leo/zreal-leo.github.io/issues"
   },
-  "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme"
+  "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme",
+  "dependencies": {
+    "docsify": "^4.11.6"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.4.2"
+  }
 }

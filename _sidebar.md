@@ -1,9 +1,19 @@
 - js
+  - [ArrayBuffer](docs/js/ArrayBuffer)
+  - [JS数据类型](docs/js/JS数据类型)
+  - [ProxyReflect](docs/js/ProxyReflect)
+  - [file以及blob](docs/js/file以及blob)
+  - [任务队列](docs/js/任务队列)
+  - [异步](docs/js/异步)
   - [操作符](docs/js/操作符)
   - [第四章](docs/js/第四章)
-- 其他
-  - [JS数据类型](docs/其他/JS数据类型)
-  - [ProxyReflect](docs/其他/ProxyReflect)
-  - [TypeScript](docs/其他/TypeScript)
-  - [vue3](docs/其他/vue3)
-  - [迭代器与生成器](docs/其他/迭代器与生成器)
+  - [装饰器](docs/js/装饰器)
+  - [迭代器与生成器](docs/js/迭代器与生成器)
+- ts
+  - [TypeScript](docs/ts/TypeScript)
+- vue
+  - [vue3新特性](docs/vue/vue3新特性)
+  - [vue3迁徙](docs/vue/vue3迁徙)
+  - [vue3非兼容更改](docs/vue/vue3非兼容更改)
+  - [生命周期](docs/vue/生命周期)
+  - [组合式API](docs/vue/组合式API)
