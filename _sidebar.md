@@ -9,6 +9,8 @@
   - [第四章](docs/js/第四章)
   - [装饰器](docs/js/装饰器)
   - [迭代器与生成器](docs/js/迭代器与生成器)
+- tools
+  - [生成changelog](docs/tools/生成changelog)
 - ts
   - [TypeScript](docs/ts/TypeScript)
 - vue
