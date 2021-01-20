@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "docsify serve",
-    "build": "node build.js"
+    "build": "node build.js",
+    "generateChangelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "repository": {
     "type": "git",
