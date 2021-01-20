@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "docsify serve",
     "build": "node build.js",
-    "generateChangelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "generateChangelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "repository": {
     "type": "git",
