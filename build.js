@@ -3,6 +3,7 @@ const fs = require("fs");
 // 理想中这里全是目录
 let dirArr = fs.readdirSync("./docs");
 
+console.log('1')
 // 先把 sidebar 删除
 fs.unlink("_sidebar.md", function (error) {
   if (error) {
