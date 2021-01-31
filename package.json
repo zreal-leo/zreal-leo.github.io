@@ -25,7 +25,7 @@
   "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && git add",
+      "pre-commit": "npm run build && git add .",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },

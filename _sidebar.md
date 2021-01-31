@@ -1,3 +1,6 @@
+- images
+  - [.DS_St](docs/images/.DS_St)
+  - [changelog.](docs/images/changelog.)
 - js
   - [ArrayBuffer](docs/js/ArrayBuffer)
   - [JS数据类型](docs/js/JS数据类型)
@@ -10,6 +13,7 @@
   - [装饰器](docs/js/装饰器)
   - [迭代器与生成器](docs/js/迭代器与生成器)
 - tools
+  - [axios封装](docs/tools/axios封装)
   - [生成changelog](docs/tools/生成changelog)
 - ts
   - [TypeScript](docs/ts/TypeScript)
