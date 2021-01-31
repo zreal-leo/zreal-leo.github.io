@@ -1,8 +1,12 @@
-# 自动生成 changelog
+# commit 生成 changelog
 
-生成 changelog 依赖于 commit 信息，所以要想自动生成 changelog，首先要规范好 commit 信息。
+我们在使用 app 时，如果你有注意，就会发现在版本升级时，有些 app 会展示给你 changlog，用来标示每个版本更新了哪些功能。
 
+例如，像这样 sublime text 的changelog
 
+![changelog](../images/changelog.png)
+
+这篇文就来看看怎样生成这样的 changelog，生成 changelog 依赖于 commit 信息，所以要想自动生成 changelog，首先要规范好 commit 信息。
 
 ### commit 信息校验
 
@@ -100,11 +104,22 @@ git tag
 git tag -a v1.2.0 -m '版本信息'
 ```
 
-将 tag 信息推到 远程
+也可以直接使用  npm version 来更新版本 **「推荐」**
+
+```git
+npm version 1.2.0 
+```
+
+这条指令可以直接将 package.json 中的 version 更改为 1.2.0，同时也会生成同名的 tag，还是帮你提交 commit，默认commit 信息也为版本号，你也可以直接指定 commit 信息
+
+```git
+npm version 1.2.0 -m '说点啥呢'
+```
+
+将 tag 信息推到 远程，别忘了顺便把 commit 提交上去。
 
 ```git
 git push --tag
 ```
 
 注意：保持 tag 号跟 package.json 中的 version 一致，就不会产生歧义。
-
