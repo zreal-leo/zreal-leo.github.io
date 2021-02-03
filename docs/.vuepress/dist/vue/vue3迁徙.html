@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Teleport | 一个靓仔的博客</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.a557fb31.css" as="style"><link rel="preload" href="/assets/js/app.a0a9fe4c.js" as="script"><link rel="preload" href="/assets/js/2.2b66ce80.js" as="script"><link rel="preload" href="/assets/js/23.f24cf4e5.js" as="script"><link rel="prefetch" href="/assets/js/10.f4ddc228.js"><link rel="prefetch" href="/assets/js/11.15c0a8c6.js"><link rel="prefetch" href="/assets/js/12.860a1b64.js"><link rel="prefetch" href="/assets/js/13.bce66f9c.js"><link rel="prefetch" href="/assets/js/14.c029513b.js"><link rel="prefetch" href="/assets/js/15.c5b6d267.js"><link rel="prefetch" href="/assets/js/16.08d0926a.js"><link rel="prefetch" href="/assets/js/17.fa09e639.js"><link rel="prefetch" href="/assets/js/18.1b6d4d3c.js"><link rel="prefetch" href="/assets/js/19.c20cdb9d.js"><link rel="prefetch" href="/assets/js/20.3be64ac4.js"><link rel="prefetch" href="/assets/js/21.8aabe91f.js"><link rel="prefetch" href="/assets/js/22.f736e252.js"><link rel="prefetch" href="/assets/js/24.90de31e2.js"><link rel="prefetch" href="/assets/js/25.1cf5f5af.js"><link rel="prefetch" href="/assets/js/26.92681510.js"><link rel="prefetch" href="/assets/js/3.4fb7297d.js"><link rel="prefetch" href="/assets/js/4.a0a1f5f0.js"><link rel="prefetch" href="/assets/js/5.d35e79eb.js"><link rel="prefetch" href="/assets/js/6.1d381bf3.js"><link rel="prefetch" href="/assets/js/7.351b5044.js"><link rel="prefetch" href="/assets/js/8.af8b7e00.js"><link rel="prefetch" href="/assets/js/9.895275e5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a557fb31.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">一个靓仔的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/js/任务队列.html" class="sidebar-link">event loop</a></li><li><a href="/js/继承.html" class="sidebar-link">继承</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>tools</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/tools/axios封装.html" class="sidebar-link">axios 在项目中的正确打开方式</a></li><li><a href="/tools/生成changelog.html" class="sidebar-link">commit 生成 changelog</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="teleport"><a href="#teleport" class="header-anchor">#</a> Teleport</h2> <h2 id="异步组件"><a href="#异步组件" class="header-anchor">#</a> 异步组件</h2> <h2 id="过滤器"><a href="#过滤器" class="header-anchor">#</a> 过滤器</h2> <p>在 vue3 中，过滤器已经被移出，官方推荐使用 计算属性或者方法来替代过滤器</p> <h2 id="事件-api"><a href="#事件-api" class="header-anchor">#</a> 事件 API</h2> <p>在 vue2 中，我们会使用一个新的 Vue 实例来作为组件通信的方式，比如</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> eventBus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>在组件中，就可以引用 eventBus</p> <div class="language-vue extra-class"><pre class="language-vue"><code>import { eventBus } from 'xx/xx'
+
+mounted(){
+	// 监听事件
+	eventBus.$on('event', ()=&gt; {})
+}
+
+beforeDestory(){
+	// 移出监听
+	eventBus.$off('event')
+}
+</code></pre></div><p>在 vue3 中，vue 实例中已经移除了  $off，$on，$once 方法，只保留了一个 $emit 方法用于子组件触发父组件的事件。</p> <h2 id="片段"><a href="#片段" class="header-anchor">#</a> 片段</h2> <p>在 vue2 中，每个组件都被要求只允许一个根节点，而在 vue3 中，则没有了这一限制，允许同时存在多个根节点</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a0a9fe4c.js" defer></script><script src="/assets/js/2.2b66ce80.js" defer></script><script src="/assets/js/23.f24cf4e5.js" defer></script>
+  </body>
+</html>

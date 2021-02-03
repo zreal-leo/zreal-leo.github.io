@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>createApp | 一个靓仔的博客</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.a557fb31.css" as="style"><link rel="preload" href="/assets/js/app.a0a9fe4c.js" as="script"><link rel="preload" href="/assets/js/2.2b66ce80.js" as="script"><link rel="preload" href="/assets/js/24.90de31e2.js" as="script"><link rel="prefetch" href="/assets/js/10.f4ddc228.js"><link rel="prefetch" href="/assets/js/11.15c0a8c6.js"><link rel="prefetch" href="/assets/js/12.860a1b64.js"><link rel="prefetch" href="/assets/js/13.bce66f9c.js"><link rel="prefetch" href="/assets/js/14.c029513b.js"><link rel="prefetch" href="/assets/js/15.c5b6d267.js"><link rel="prefetch" href="/assets/js/16.08d0926a.js"><link rel="prefetch" href="/assets/js/17.fa09e639.js"><link rel="prefetch" href="/assets/js/18.1b6d4d3c.js"><link rel="prefetch" href="/assets/js/19.c20cdb9d.js"><link rel="prefetch" href="/assets/js/20.3be64ac4.js"><link rel="prefetch" href="/assets/js/21.8aabe91f.js"><link rel="prefetch" href="/assets/js/22.f736e252.js"><link rel="prefetch" href="/assets/js/23.f24cf4e5.js"><link rel="prefetch" href="/assets/js/25.1cf5f5af.js"><link rel="prefetch" href="/assets/js/26.92681510.js"><link rel="prefetch" href="/assets/js/3.4fb7297d.js"><link rel="prefetch" href="/assets/js/4.a0a1f5f0.js"><link rel="prefetch" href="/assets/js/5.d35e79eb.js"><link rel="prefetch" href="/assets/js/6.1d381bf3.js"><link rel="prefetch" href="/assets/js/7.351b5044.js"><link rel="prefetch" href="/assets/js/8.af8b7e00.js"><link rel="prefetch" href="/assets/js/9.895275e5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a557fb31.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">一个靓仔的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/js/任务队列.html" class="sidebar-link">event loop</a></li><li><a href="/js/继承.html" class="sidebar-link">继承</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>tools</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/tools/axios封装.html" class="sidebar-link">axios 在项目中的正确打开方式</a></li><li><a href="/tools/生成changelog.html" class="sidebar-link">commit 生成 changelog</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="createapp"><a href="#createapp" class="header-anchor">#</a> createApp</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>调用 createApp 会生成一个应用实例，应用实例会暴露出全局 API</p> <h4 id="config-globalproperties"><a href="#config-globalproperties" class="header-anchor">#</a> config.globalProperties</h4> <p>在 vue2 中，我们会将 一些属性挂载到原型链上，例如</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$http</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><p>在 vue3 中，则需要改成</p> <div class="language-js extra-class"><pre class="language-js"><code>app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>globalProperties<span class="token punctuation">.</span><span class="token function-variable function">$http</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><h4 id="nexttick"><a href="#nexttick" class="header-anchor">#</a> nextTick</h4> <h4 id="v-model"><a href="#v-model" class="header-anchor">#</a> v-model</h4> <p>在 vue3 中，将组件 props 双向绑定的 sync 移除了，同时推荐用 v-model 来替代，其实用法也是跟 sync 绑定相差无几啦</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// parentComponent
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ChildComponent</span> <span class="token attr-name"><span class="token namespace">v-model:</span>msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>msg<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ChildComponent</span><span class="token punctuation">&gt;</span></span>
+export default {
+	data(){
+		return {
+			msg: 'how are you'
+		}
+	}
+}
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>// ChildComponent
+export default {
+	props: { msg: String },
+	methods: {
+		changeProp(){
+			this.$emit('update:msg', 'fine')
+		}
+	}
+}
+</code></pre></div><p>在父组件绑定值的时候，允许在 v-model 后面接上传递 prop 的属性名以及属性值。在子组件中，就直接用 props 接收传递进来的值，再用 <strong>this.$emit('update:propName', newVal)</strong> 将新的值传递到父组件就行。</p> <p>但是，在父组件绑定的时候，也可以不传递属性名，即直接</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ChildComponent</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>msg<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ChildComponent</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>那么此时，就默认 prop 的属性名为 modelValue，就无法传递多个 prop 了。</p> <p>在子组件中，则需要</p> <div class="language-vue extra-class"><pre class="language-vue"><code>export default {
+	props: { modelValue: String },
+	methods: {
+		changeProp(){
+			this.$emit('update:modelValue', 'fine')
+		}
+	}
+}
+</code></pre></div><h3 id="自定义指令"><a href="#自定义指令" class="header-anchor">#</a> 自定义指令</h3> <p>在 vue3 中，创建一个自定义指令时，可以拥有类似于组件生命周期的方法</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> app <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'highLight'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">beforeMount</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>background <span class="token operator">=</span> binding<span class="token punctuation">.</span>value
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">beforeUpdate</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">updated</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">beforeUnmount</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">unmounted</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>第一个参数 el 表示为绑定的 dom节点，binding.value 为绑定的值</p> <p>此时，只需要</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;p v-highLight=&quot;'red'&quot;&gt;&lt;/p&gt;
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a0a9fe4c.js" defer></script><script src="/assets/js/2.2b66ce80.js" defer></script><script src="/assets/js/24.90de31e2.js" defer></script>
+  </body>
+</html>
