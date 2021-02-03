@@ -7,10 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "docsify serve",
-    "build": "node build.js",
-    "generateChangelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -25,14 +23,14 @@
   "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && git add .",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {
-    "docsify": "^4.11.6"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "docsify-cli": "^4.4.2"
+    "@commitlint/config-conventional": "^11.0.0",
+    "commitlint": "^11.0.0",
+    "husky": "^4.3.8",
+    "vuepress": "^1.8.0"
   }
 }
