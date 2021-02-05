@@ -1,16 +1,12 @@
+# vue3 迁徙
+
 ## Teleport
 
-
-
 ## 异步组件
-
-
 
 ## 过滤器
 
 在 vue3 中，过滤器已经被移出，官方推荐使用 计算属性或者方法来替代过滤器
-
-
 
 ## 事件 API
 
@@ -20,25 +16,14 @@
 export const eventBus = new Vue()
 ```
 
-在组件中，就可以引用 eventBus 
+在组件中，就可以引用 eventBus
 
 ```vue
-import { eventBus } from 'xx/xx'
-
-mounted(){
-	// 监听事件
-	eventBus.$on('event', ()=> {})
-}
-
-beforeDestory(){
-	// 移出监听
-	eventBus.$off('event')
-}
+import { eventBus } from 'xx/xx' mounted(){ // 监听事件 eventBus.$on('event', ()=> {}) } beforeDestory(){ // 移出监听
+eventBus.$off('event') }
 ```
 
-在 vue3 中，vue 实例中已经移除了  $off，$on，$once 方法，只保留了一个 $emit 方法用于子组件触发父组件的事件。
-
-
+在 vue3 中，vue 实例中已经移除了 $off，$on，$once 方法，只保留了一个 $emit 方法用于子组件触发父组件的事件。
 
 ## 片段
 
@@ -46,13 +31,8 @@ beforeDestory(){
 
 ```vue
 <template>
-	<li>1</li>
-	<li>2</li>
-	<li>3</li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
 </template>
 ```
-
-
-
-
-

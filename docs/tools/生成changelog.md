@@ -2,13 +2,13 @@
 
 我们在使用 app 时，如果你有注意，就会发现在版本升级时，有些 app 会展示给你 changlog，用来标示每个版本更新了哪些功能。
 
-例如，像这样 sublime text 的changelog
+例如，像这样 sublime text 的 changelog
 
 ![changelog](../images/changelog.png)
 
 这篇文就来看看怎样生成这样的 changelog，生成 changelog 依赖于 commit 信息，所以要想自动生成 changelog，首先要规范好 commit 信息。
 
-### commit 信息校验
+## commit 信息校验
 
 git 提供了 hook 用来在进行 git 操作时进行校验，当然，这里我们选择用插件
 
@@ -24,7 +24,7 @@ yarn add -D husky commitlint
 {
   "husky": {
     "hooks": {
-       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"	
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
@@ -34,15 +34,13 @@ yarn add -D husky commitlint
 
 ```js
 module.exports = {
-   extends: ['@commitlint/config-conventional']
+  extends: ["@commitlint/config-conventional"],
 }
 ```
 
 就大功告成了，如果不出意外的话，每次 commit 之前都会进行校验
 
-
-
-### commit 信息如何写
+## commit 信息如何写
 
 一个符合规范的 commit 信息应该包括三个部分 header（必填）、body(可忽略)、footer (可忽略)
 
@@ -52,15 +50,15 @@ module.exports = {
 
 type 包含以下几种
 
-| type     | 说明                                            | 是否出现在changelog中 |
-| -------- | ----------------------------------------------- | :-------------------: |
-| feat     | 新功能(feature)                                 |          会           |
-| fix      | 修复 bug                                        |          会           |
-| docs     | 文档                                            |       自行决定        |
-| style    | 格式（不影响代码运行的变动）                    |       自行决定        |
-| refactor | 重构（即不是新增功能，也不是修改bug的代码变动） |       自行决定        |
-| test     | 增加测试                                        |       自行决定        |
-| chore    | 构建过程或辅助工具的变动                        |       自行决定        |
+| type     | 说明                                              | 是否出现在 changelog 中 |
+| -------- | ------------------------------------------------- | :---------------------: |
+| feat     | 新功能(feature)                                   |           会            |
+| fix      | 修复 bug                                          |           会            |
+| docs     | 文档                                              |        自行决定         |
+| style    | 格式（不影响代码运行的变动）                      |        自行决定         |
+| refactor | 重构（即不是新增功能，也不是修改 bug 的代码变动） |        自行决定         |
+| test     | 增加测试                                          |        自行决定         |
+| chore    | 构建过程或辅助工具的变动                          |        自行决定         |
 
 一个最简短的 commit 例子如下
 
@@ -68,9 +66,7 @@ type 包含以下几种
 git commit -m 'feat: 新增人员搜索功能'
 ```
 
-
-
-### commit 生成 changelog
+## 生成 changelog
 
 生成 changelog.md 我们选择的是 **conventional-changelog-cli**
 
@@ -79,7 +75,7 @@ git commit -m 'feat: 新增人员搜索功能'
 ```json
 {
   "script": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   }
 }
 ```
@@ -88,7 +84,7 @@ git commit -m 'feat: 新增人员搜索功能'
 
 如果是第一个生成 changelog 文件，可以执行 **conventional-changelog -p angular -i CHANGELOG.md -s -r 0** 将所有的 commit 都生成在文件里。
 
-那么上面的这条 script，只会将当前的 commit 跟最近一次 tag 的提交做对比，列出两者之间的 diff 
+那么上面的这条 script，只会将当前的 commit 跟最近一次 tag 的提交做对比，列出两者之间的 diff
 
 所以，在 commit 之后，如果这是一次版本更新的话，要及时将这次 commit 打上 tag，
 
@@ -104,13 +100,13 @@ git tag
 git tag -a v1.2.0 -m '版本信息'
 ```
 
-也可以直接使用  npm version 来更新版本 **「推荐」**
+也可以直接使用 npm version 来更新版本 **「推荐」**
 
 ```git
-npm version 1.2.0 
+npm version 1.2.0
 ```
 
-这条指令可以直接将 package.json 中的 version 更改为 1.2.0，同时也会生成同名的 tag，还是帮你提交 commit，默认commit 信息也为版本号，你也可以直接指定 commit 信息
+这条指令可以直接将 package.json 中的 version 更改为 1.2.0，同时也会生成同名的 tag，还是帮你提交 commit，默认 commit 信息也为版本号，你也可以直接指定 commit 信息
 
 ```git
 npm version 1.2.0 -m '说点啥呢'
