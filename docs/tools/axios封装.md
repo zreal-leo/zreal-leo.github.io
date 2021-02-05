@@ -86,7 +86,7 @@ export default http
 http.defaults.baseURL = process.env.NODE_ENV === "development" ? "测试URL" : "生产URL"
 ```
 
-实际请求的 URL 就为 baseURL + request url，比如这边配置的 baseURL 为 <code> <http://baidu.com/s> </code>，那么 search 方法就可以将 url 写成 **/s**
+实际请求的 URL 就为 baseURL + request url，比如这边配置的 baseURL 为 <code> http://baidu.com/s</code>，那么 search 方法就可以将 url 写成 **/s**
 
 ```js
 export function search({ wd }) {
@@ -162,7 +162,7 @@ http.interceptors.response.use(
 
 配合组件库，我们还可以在请求发起前，设置 loading，在请求响应后，结束 loading，贴上完整的 http.js
 
-```js
+```js{17-29,33,40,44}
 import axios from "axios"
 import qs from "qs"
 import { Loading, Message } from "element-ui"

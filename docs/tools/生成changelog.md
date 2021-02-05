@@ -12,13 +12,13 @@
 
 git 提供了 hook 用来在进行 git 操作时进行校验，当然，这里我们选择用插件
 
-需要先安装 **husky**和 **commitlint**两个插件
+需要先安装 **husky** 和 **commitlint** 两个插件
 
 ```shell
 yarn add -D husky commitlint
 ```
 
-在 package.json 中，新增 husky 属性，对 commit-msg 用 commitlint 插件进行校验
+在 package.json 中，新增 husky 属性，对 commit 提交的信息用 commitlint 插件进行校验
 
 ```json
 {
@@ -30,7 +30,7 @@ yarn add -D husky commitlint
 }
 ```
 
-使用 commitlint 需要新建 **commitlint.config.js** 文件，进行配置，具体配置可以看[文档](https://commitlint.js.org/#/reference-configuration)， 这里我们选择常规配置，常规配置一般就够用了。需要先安装 **@commitlint/config-conventional** 插件，再配置 commitlint.config.js
+使用 commitlint 需要新建 **commitlint.config.js** 文件，进行配置，具体配置可以看[文档](https://commitlint.js.org/#/reference-configuration)，这里我们选择常规配置，常规配置一般就够用了。需要先安装 **@commitlint/config-conventional** 插件，再配置 commitlint.config.js
 
 ```js
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
 
 ## commit 信息如何写
 
-一个符合规范的 commit 信息应该包括三个部分 header（必填）、body(可忽略)、footer (可忽略)
+一个符合规范的 commit 信息应该包括三个部分 header（必填）、body(可忽略)、footer (可忽略)，具体信息可查看[文档](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ```git
 <type, 必填>(<scope，可忽略>): subject(必填)
@@ -66,6 +66,16 @@ type 包含以下几种
 git commit -m 'feat: 新增人员搜索功能'
 ```
 
+如果你想写的具体点，那可以使用下面的格式
+
+```bash
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
 ## 生成 changelog
 
 生成 changelog.md 我们选择的是 **conventional-changelog-cli**
@@ -80,9 +90,13 @@ git commit -m 'feat: 新增人员搜索功能'
 }
 ```
 
-执行这条 script，就会将符合规范的 commit 记录生成 changelog.md 文件。
+执行这条 script，就会将符合规范的 commit 提交信息生成 changelog.md 文件。
 
-如果是第一个生成 changelog 文件，可以执行 **conventional-changelog -p angular -i CHANGELOG.md -s -r 0** 将所有的 commit 都生成在文件里。
+如果是第一次生成 changelog 文件，可以执行下面这条命令将所有的 commit 都生成在文件里。
+
+```bash
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+```
 
 那么上面的这条 script，只会将当前的 commit 跟最近一次 tag 的提交做对比，列出两者之间的 diff
 
@@ -116,6 +130,7 @@ npm version 1.2.0 -m '说点啥呢'
 
 ```git
 git push --tag
+git push
 ```
 
 注意：保持 tag 号跟 package.json 中的 version 一致，就不会产生歧义。
