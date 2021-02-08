@@ -13,7 +13,7 @@ module.exports = {
         title: "JS",
         collapsable: false,
         sidebarDepth: 1,
-        children: ["/js/任务队列", "/js/继承"],
+        children: ["/js/任务队列", "/js/继承", "/js/手写Promise"],
       },
       {
         title: "tools",

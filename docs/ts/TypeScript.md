@@ -1,7 +1,7 @@
 # TypeScript
 
 > TypeScript 是 JavaScript 的超集，它可以编译成纯 JavaScript。用来限制变量、常量的类型。  
-> 注意：通常情况下 ts 文件无法被直接运行，需要被编译成 js 文件。
+> 注意：通常情况下 Ts 文件无法被直接运行，需要被编译成 js 文件。
 
 ## 安装 TypeScript
 

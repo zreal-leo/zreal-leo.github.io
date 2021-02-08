@@ -14,7 +14,7 @@ JavaScript 有 6 种简单的数据类型：Null、Undefined、Array、String、
 - symbol
 - Function
 
-当试图读取一个未定义的变量如 age 时，会报<code>age is not defined</code>的错误，但此时，如果用<code>typeof</code> 去检测 age 的数据类型时，会发现，<code>typof age</code>的值为<code>undefined</code>
+当试图读取一个未定义的变量如 age 时，会报<code>age is not defined</code>的错误，但此时，如果用<code>typeof</code> 去检测 age 的数据类型时，会发现，<code>typeof age</code>的值为<code>undefined</code>
 
 ## Undefined
 
@@ -37,7 +37,7 @@ null == undefined // true
 
 ## Boolean
 
-Boolean 类型有两个字面值，ture 和 false。虽然 Boolean 类型只有两个值，但是其他所有的数据类型都可以通过<code>Boolean()</code>函数来转换成为 Boolean 值，转换规则如下表
+Boolean 类型有两个字面值，true 和 false。虽然 Boolean 类型只有两个值，但是其他所有的数据类型都可以通过<code>Boolean()</code>函数来转换成为 Boolean 值，转换规则如下表
 
 | 数据类型  | 转换为 true          | 转换为 false |
 | --------- | -------------------- | ------------ |
@@ -108,7 +108,7 @@ isNaN("red") // true，无法转换为数字
   parseInt("AF", 16) // 175
   ```
 
-- parseFloat()：parseFloat()方法也用来转换字符串，原理同 <code>parseInt()</code> 类似，不同之处有，paseFloat 只能转换十进制的字符串，且能转换浮点数，即小数。如果字符串有多个小数点，则只有第一个小数点是有效的
+- parseFloat()：parseFloat()方法也用来转换字符串，原理同 <code>parseInt()</code> 类似，不同之处有，parseFloat 只能转换十进制的字符串，且能转换浮点数，即小数。如果字符串有多个小数点，则只有第一个小数点是有效的
 
   ```js
   parseFloat("12.12") // 12.12

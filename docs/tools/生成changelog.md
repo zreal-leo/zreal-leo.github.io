@@ -1,6 +1,6 @@
 # commit 生成 changelog
 
-我们在使用 app 时，如果你有注意，就会发现在版本升级时，有些 app 会展示给你 changlog，用来标示每个版本更新了哪些功能。
+我们在使用 app 时，如果你有注意，就会发现在版本升级时，有些 app 会展示给你 changelog，用来标示每个版本更新了哪些功能。
 
 例如，像这样 sublime text 的 changelog
 
