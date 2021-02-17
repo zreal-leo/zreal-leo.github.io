@@ -1,5 +1,5 @@
 module.exports = {
-  title: "一个靓仔的博客",
+  title: "One Piece",
   description: "Just playing around",
   themeConfig: {
     repo: "https://github.com/zreal-leo/zreal-leo.github.io",
@@ -10,16 +10,22 @@ module.exports = {
     docsBranch: "main",
     sidebar: [
       {
-        title: "JS",
+        title: "Js",
         collapsable: false,
         sidebarDepth: 1,
-        children: ["/js/任务队列", "/js/继承", "/js/手写Promise"],
+        children: ["/js/任务队列", "/js/继承", "/js/手写Promise", "/js/迭代器与生成器"],
       },
       {
-        title: "tools",
+        title: "Tools",
         collapsable: false,
         sidebarDepth: 1,
         children: ["tools/axios封装", "tools/生成changelog"],
+      },
+      {
+        title: "Ts",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: ["/ts/初识", "ts/接口"],
       },
     ],
     lastUpdated: "更新于",
