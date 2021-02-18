@@ -41,7 +41,7 @@ promise.then(onFulfilled, onRejected)
 then 方法允许在同个 Promise 中被多次调用，如下面代码
 
 ```js
-let p = new Promise((resove, rejected) => {
+let p = new Promise((resolve, rejected) => {
   resolve()
 })
 
@@ -56,15 +56,25 @@ then 方法必须返回一个 Promise
 let promise2 = promise1.then(onFulfilled, onRejected)
 ```
 
-- 无论 onFulfilled 或者是 onRejected return 出来一个值 x，都得先执行一遍 Promise Resolution Procedure <code>[[Resolve]](promise2, x)</code>
+- 无论 onFulfilled 或者是 onRejected return 出来一个值 x，都得先执行一遍 Promise Resolution Procedure `[[Resolve]](promise2, x)`
 - 无论 onFulfilled 或者是 onRejected 抛出一个异常 e，Promise2 都将以用这个 e 作为 reason 被 rejected
 - 如果 onFulfilled 不是一个函数，但是 promise1 更改为了 fulfilled 状态，那么 promise2 也将以同样的 value 更改为 fulfilled 状态
 - 如果 onRejected 不是一个函数，但是 promise1 更改为了 rejected 状态，那么 promise2 也将以同样的 reason 更改为 rejected 状态
 - 后面这两条翻译成大白话就是，如果 Promise 更改了状态，没有被相应的处理的话，就会将这个状态以及 value 或者是 reason 传递下去
 
-### Promise Resolution Procedure (不知咋翻)
+### Promise Resolution Procedure
 
-算了，直接先写吧，看不下去了，有兴趣可以自行查阅[文档](https://promisesaplus.com/#the-promise-resolution-procedure)
+```js
+let promise2 = promise1.then(onFulfilled, onRejected)
+```
+
+如果我们将第一个 then 返回的值，记做 x，先判断 x 是不是 Promise
+
+如果 x 是 Promise，则取 Promise 返回的结果作为 promise2 成功的结果
+
+如果是普通值，则直接将这个值作为 promise2 的结果
+
+我们需要一个函数，用来处理 promise2 和 x 的关系
 
 ## 上手
 
@@ -142,10 +152,10 @@ then(onFulfilled, onRejected){
 }
 ```
 
-更改完之后就很对劲，符合事件循环机制了，注意还是**有点不对劲**，稍后再提
+更改完之后就符合事件循环机制了，注意还是**有点不对劲**，稍后再提
 
 ```js
-new MyPromise((rosolve, reject) => {
+new MyPromise((resolve, reject) => {
   resolve(1)
 }).then((res) => {
   console.log(res)
@@ -170,7 +180,7 @@ new MyPromise((resolve) => {
 
 实际上并没有打印出来，因为执行 then 的时候 MyPromise 实例的 state 还是 pending。等 1s 后，MyPromise 实例 fulfilled 的时候，then 方法也没有再执行
 
-那，我们**把 onFulfilled 和 onRejected 都存起来**，等 resolve 或者是 reject 的时候再依次执行，说干就干，下面只展示了更改的代码
+那，我们**把 onFulfilled 和 onRejected 都存起来**，等 resolve 或者是 reject 的时候再依次执行，说干就干，下面只展示了更改部分的代码
 
 ```js
 class MyPromise {
@@ -210,4 +220,80 @@ class MyPromise {
 
 ### then 方法 return Promise
 
-到了我认为最难的部分了
+我们在使用 Promise 的时候，可以链式使用，比如在 then 之后接上 then 或者 catch，之所以能够这样做，那是因为在 then 方法使用之后，同时又返回了一个 Promise
+
+回顾 Promise Resolution 部分的文档，我们暂且将这个函数叫做 resolvePromise 吧，调整一下 then
+方法
+
+```js
+then(onFulfilled, onRejected) {
+  let promise2 = new Promise((resolve, reject) => {
+    if (this.state === "fulfilled") {
+      setTimeout(() => {
+        try {
+          let x = onFulfilled(this.value)
+          resolvePromise(promise2, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    }
+    if (this.state === "rejected") {
+      setTimeout(() => {
+        try {
+          let x = onRejected(this.reason)
+          resolvePromise(promise2, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    }
+    if (this.state === "pending") {
+      this.onResolvedCallbacks.push(() => {
+        setTimeout(() => {
+          try {
+            let x = onFulfilled(this.value)
+            resolvePromise(promise2, x, resolve, reject)
+          } catch (e) {
+            reject(e)
+          }
+        })
+      })
+      this.onRejectedCallbacks.push(() => {
+        setTimeout(() => {
+          try {
+            let x = onRejected(this.reason)
+            resolvePromise(promise2, x, resolve, reject)
+          } catch (e) {
+            reject(e)
+          }
+        })
+      })
+    }
+  })
+  // 返回promise，完成链式
+  return promise2
+}
+```
+
+接下来我们就要实现 resolvePromise 方法了
+
+来看一下 resolvePromise 的需求，具体可查阅文档[Promise/A+规范](https://promisesaplus.com/#the-promise-resolution-procedure)，下文仅做概括
+
+- 如果 promise2 和 x 值向相同的地址，则用 `TypeError`作为 reason reject
+- 如果 x 是个 promise
+  - 状态为 pending，则需要等待，直到 fulfilled 或者 rejected 为止
+  - 状态为 fulfilled，则用与 promise2 相同的 value fulfill
+  - 状态为 rejected，则用与 promise2 相同的 reason reject
+- 如果 x 是个 Object 或者 Function
+- 如果 x 是个普通的值，则直接 resolve
+
+我们先简单点，直接假定 x 为数值
+
+```js
+function resolvePromise(promise2, x, resolve, reject) {
+  if (x === Promise2) return reject(new TypeError("xxx"))
+
+  resolve(x)
+}
+```
