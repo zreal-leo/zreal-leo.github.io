@@ -22,10 +22,10 @@ module.exports = {
         children: ["tools/axios封装", "tools/生成changelog"],
       },
       {
-        title: "Ts",
+        title: "其他",
         collapsable: false,
         sidebarDepth: 1,
-        children: ["/ts/初识", "ts/接口"],
+        children: ["/ts/初识", "vue/函数调用组件"],
       },
     ],
     lastUpdated: "更新于",
