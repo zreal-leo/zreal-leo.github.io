@@ -13,7 +13,15 @@ module.exports = {
         title: "Js",
         collapsable: false,
         sidebarDepth: 1,
-        children: ["/js/任务队列", "/js/继承", "/js/手写Promise", "/js/迭代器与生成器"],
+        children: [
+          "/js/任务队列",
+          "/js/继承",
+          "/js/手写Promise",
+          "/js/迭代器与生成器",
+          // "js/JS数据类型",
+          "js/柯里化以及偏函数",
+          "js/ProxyReflect",
+        ],
       },
       {
         title: "Tools",
