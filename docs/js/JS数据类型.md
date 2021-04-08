@@ -8,14 +8,24 @@ JavaScript 有 7 种简单的数据类型：Null、Undefined、Array、String、
 
 - undefined
 - boolean
-- Object 表示值为对象或者 Null
-- Number
+- object 表示值为对象或者 null
+- number
 - string
 - symbol
-- BigInt
-- Function
+- bigint
+- function
 
 当试图读取一个未定义的变量如 age 时，会报`age is not defined`的错误，但此时，如果用`typeof` 去检测 age 的数据类型时，会发现，`typeof age`的值为`undefined`
+
+由于 typeof 检测数据类型不是很理想，我们可以使用 `Object.property.toString.call()` 来判断数据类型
+
+```js
+let arr = [1, 2, 3, 4]
+let type = Object.property.toString.call(arr)
+// type 为 [object Array]
+```
+
+第二个单词就是该变量的准确类型
 
 ## Undefined
 
@@ -108,7 +118,7 @@ isNaN("red") // true，无法转换为数字
   parseInt("x123") // NaN
   ```
 
-  实际上，parseInt() 方法还支持第二个参数，用于指定需要转换的字符串原本是什么进制，默认是 十进制，可以不传
+  parseInt() 方法还支持第二个参数，用于指定需要转换的字符串原本是什么进制，默认是十进制，可以不传
 
   ```js
   parseInt("11", 2) // 3 2进制下的11转换成十进制，为3
@@ -212,6 +222,6 @@ let obj = {
 }
 ```
 
-#### 还有一些高深的东西以后再学一遍再写吧
+// TODO:
 
 ## Object
