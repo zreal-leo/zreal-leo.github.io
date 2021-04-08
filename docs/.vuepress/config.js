@@ -36,7 +36,6 @@ module.exports = {
         children: ["/ts/初识", "vue/函数调用组件", "tools/websocket", "others/跨域"],
       },
     ],
-    lastUpdated: "更新于",
   },
   markdown: {
     lineNumbers: true,
