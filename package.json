@@ -30,12 +30,11 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/config-conventional": "^12.1.1",
     "commitlint": "^12.1.1",
     "husky": "^6.0.0",
     "markdownlint-cli": "^0.26.0",
-    "vuepress": "^1.8.0"
+    "vuepress": "^1.8.2"
   }
 }

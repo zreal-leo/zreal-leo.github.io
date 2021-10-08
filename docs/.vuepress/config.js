@@ -33,7 +33,13 @@ module.exports = {
         title: "其他",
         collapsable: false,
         sidebarDepth: 1,
-        children: ["/ts/初识", "vue/函数调用组件", "tools/websocket", "others/跨域"],
+        children: [
+          "ts/初识",
+          "vue/函数调用组件",
+          "others/React",
+          "tools/websocket",
+          "others/跨域",
+        ],
       },
     ],
   },
@@ -41,4 +47,4 @@ module.exports = {
     lineNumbers: true,
   },
   evergreen: true,
-}
+};
