@@ -36,7 +36,7 @@ module.exports = {
         children: [
           "ts/初识",
           "vue/函数调用组件",
-          "others/React",
+          "others/Hook",
           "tools/websocket",
           "others/跨域",
         ],

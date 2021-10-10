@@ -209,3 +209,38 @@ function TextInputWithFocusButton() {
   );
 }
 ```
+
+## 自定义 Hook
+
+使用 Hook 需要满足遵循两条规则
+
+- 只在最顶层使用 Hook
+- 只在 React 组件及自定义 Hook 中使用 Hook
+
+所以自定义 Hook 的本质也就是封装公用函数，只不过需要遵循 Hook 的使用规则，并以 `use` 开头，也可以使用 Hook
+
+比如需要抽取一个展示用户是否登录的 Hook
+
+```jsx
+function useIsOnline(userId) {
+  const [isOnline, setIsOnline] = useState(false);
+
+  // do something
+
+  return isOnline;
+}
+```
+
+在组件中使用
+
+```jsx
+function App() {
+  const id = "123";
+  const online = useIsOnline(id);
+}
+```
+
+## 为什么需要 Hook
+
+- 更好的实现组件复用逻辑的问题，在 class 组件中需要通过 `HOC` 或者 `render props`才能实现的使用自定义 Hook 可以轻松实现，代码也更为清晰
+- 解决了在 class 组件中逻辑散落在各个生命周期中的问题，在 Hook 中能够将相关联的部分拆分更小的部分
