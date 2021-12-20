@@ -31,10 +31,10 @@
     }
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^12.1.1",
-    "commitlint": "^12.1.1",
-    "husky": "^6.0.0",
-    "markdownlint-cli": "^0.26.0",
-    "vuepress": "^1.8.2"
+    "@commitlint/config-conventional": "^15.0.0",
+    "commitlint": "^15.0.0",
+    "husky": "^7.0.4",
+    "markdownlint-cli": "^0.30.0",
+    "vuepress": "2.0.0-beta.27"
   }
 }
