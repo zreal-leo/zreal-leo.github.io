@@ -234,7 +234,7 @@ lerna add axios --scope package-a
 
 上面有提到 lerna 的两条核心指令是 bootstrap 和 publish，bootstrap 我们可以使用 yarn workspace 来提升依赖，且比 lerna 做的更好。publish 可就只有是 lerna 擅长的地方了。
 
-来看一下执行 `npm publish` 时做了哪些事
+来看一下执行 `lerna publish` 时做了哪些事
 
 1. 找出上一个版本发布以来有变更的 package
 2. 提示开发者确定版本号
@@ -248,7 +248,7 @@ lerna add axios --scope package-a
 
 尽管 lerna + yarn workspace 能够很好的解决 monoRepo 开发中的一系列问题，但是 learn 现在基本处于一个[无人维护](https://github.com/lerna/lerna/issues/2703)的状态。我们只能需找新的工具。
 
-pnpm 相比于 npm 或者 yarn，它的用户量和知名都不是很高，但它也凭借着一些优势，比如快速、节省空间的依赖安装、严格的依赖管理，以及优秀的 monoRepo 支持，得到了一部分人的喜爱。
+pnpm 相比于 npm 或者 yarn，它的用户量和知名度都不是很高，但它也凭借着一些优势，比如快速、节省空间的依赖安装、严格的依赖管理，以及优秀的 monoRepo 支持，得到了一部分人的喜爱。
 
 前段时间，vue 完成了从 `yarn workspaces` 到 `pnpm workspaces` 的[迁移](https://github.com/vuejs/vue-next/commits/master?after=44b95276f5c086e1d88fa3c686a5f39eb5bb7821+104&branch=master)，可能在不久之后，vue 生态的都会完成 pnpm 的迁移。
 
@@ -285,4 +285,97 @@ pnpm add package-a axios --filter package-b
 }
 ```
 
-就支持了 yarn2 的 workspace 协议
+可以看到 pnpm 支持的也是 workspace 协议。
+
+接下来我们建一个 demo 来简单走一下 pnpm workspaces 从开发到发布的过程。我们在 packages 文件夹见三个项目 package-a、package-b、package-c，就简称 PA、PB、PC 吧。其中前两个作为工具库，PC 作为业务项目。
+
+我们在 PB 中，安装 `lodash-es`包，
+
+```shell
+pnpm add lodash-es --filter package-b
+```
+
+并在入口文件中暴露出一个函数
+
+```js
+// package-b
+import { random } from "lodash-es";
+
+export function randomNum(min, max) {
+  return random(min, max);
+}
+```
+
+在 PA 中，使用这个方法再做一些事
+
+```shell
+pnpm add package-b --filter package-a
+```
+
+```js
+// package-a
+import { randomNum } from "package-b";
+
+export function deleteRandomItem(arr) {
+  const length = arr.length;
+  const index = randomNum(0, length - 1);
+  arr.splice(index, 1);
+}
+```
+
+在 PC 中我们就可以使用这个方法了，
+
+```shell
+pnpm add package-a --filter package-c
+```
+
+```js
+import { deleteRandomItem } from "package-a";
+
+let arr = [1, 2, 3, 4, 5];
+deleteRandomItem(arr);
+```
+
+当然在这个 demo 中这样的封装有些多此一举，这里只是用来介绍 pnpm workspaces 的使用。
+
+我们的包都写好之后，就需要考虑将包提交发布等操作了。pnpm 支持使用 [changesets](https://github.com/changesets/changesets) 来管理版本以及生成 changelog。
+
+在根目录下，安装依赖，并执行初始化。
+
+```shell
+pnpm add -DW @changesets/cli
+
+pnpm changeset init
+```
+
+会在你的根目录下生成 `.changeset`文件夹，文件夹下有 `config.json` 和 `README.md` 两个文件，关于 config 的配置可以查看[这里](https://github.com/changesets/changesets/blob/main/docs/config-file-options.md)
+
+更改之后需要发布到 npm 之前，需要 `pnpm changeset` 根据命令行提示来告诉 changeset 此次提交涉及的范围、如何更改版本号，以及更改的内容。
+
+之后 changeset 会在 .changeset 生成一个 md 文件（文件名好像没有实际意义）。
+
+```md
+---
+"package-a": minor
+---
+
+新增 console
+```
+
+当然你也可以去更改这些信息。此时 changeset 已经知道了在哪个项目里怎么去更改版本号，以及版本信息是啥了，上面的 md 相当于在 package-a 项目中执行
+
+```shell
+npm version minor -m "新增 console"
+```
+
+执行 `pnpm changeset version`可以依照 md 文件更新版本和 changelog
+
+执行 `pnpm install`重新生成 lock 文件。
+
+最后提交到 git，以及 publish 到 npm。
+
+测试的 demo 不建议推送到 npm，我们可以使用 [verdaccio](https://www.npmjs.com/package/verdaccio) 搭建一个本地的 npm 服务，比较简单这里就不提了。
+
+## 后话
+
+关于 monorepo 我并没有太多的实战经验，这篇其实算是最近一段时间的学习总结，如果在阅读本篇时发现有什么问题，欢迎与我联系探讨交流。
