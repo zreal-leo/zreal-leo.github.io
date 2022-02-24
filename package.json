@@ -10,7 +10,6 @@
     "dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "markdownlint": "markdownlint docs/* --fix",
-    "deploy": "GH=1 yarn docs:build && bash deploy.sh",
     "prepare": "husky install"
   },
   "repository": {
