@@ -23,17 +23,11 @@
     "url": "https://github.com/zreal-leo/zreal-leo.github.io/issues"
   },
   "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn markdownlint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "devDependencies": {
-    "@commitlint/config-conventional": "^15.0.0",
-    "commitlint": "^15.0.0",
-    "husky": "^7.0.4",
-    "markdownlint-cli": "^0.30.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "commitlint": "^17.3.0",
+    "husky": "^8.0.2",
+    "markdownlint-cli": "^0.32.2",
     "vuepress": "2.0.0-beta.27"
   }
 }
