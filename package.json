@@ -7,8 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "markdownlint": "markdownlint docs/* --fix",
     "prepare": "husky install"
   },
@@ -28,6 +29,7 @@
     "commitlint": "^17.3.0",
     "husky": "^8.0.2",
     "markdownlint-cli": "^0.32.2",
-    "vuepress": "2.0.0-beta.27"
+    "vitepress": "1.0.0-alpha.45",
+    "vue": "^3.2.47"
   }
 }

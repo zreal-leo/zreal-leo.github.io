@@ -389,7 +389,3 @@ npm version minor -m "新增 console"
 最后提交到 git，以及 publish 到 npm。
 
 测试的 demo 不建议推送到 npm，我们可以使用 [verdaccio](https://www.npmjs.com/package/verdaccio) 搭建一个本地的 npm 服务，比较简单这里就不提了。
-
-## 后话
-
-关于 monoRepo 我也并没有太多的实战经验，这篇其实算是最近一段时间的学习总结，可能只算纸上谈兵。如果在阅读本篇时发现有什么问题，欢迎与我联系探讨交流。
