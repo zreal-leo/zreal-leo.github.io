@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ag as l}from"./chunks/framework.Bw-5EFTY.js";const o=JSON.parse('{"title":"JS 数据类型","description":"","frontmatter":{},"headers":[],"relativePath":"js/JS数据类型.md","filePath":"js/JS数据类型.md"}'),e={name:"js/JS数据类型.md"};function t(p,s,h,k,r,d){return n(),a("div",null,s[0]||(s[0]=[l("",60)]))}const g=i(e,[["render",t]]);export{o as __pageData,g as default};

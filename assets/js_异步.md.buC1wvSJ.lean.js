@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ag as l}from"./chunks/framework.Bw-5EFTY.js";const g=JSON.parse('{"title":"异步","description":"","frontmatter":{},"headers":[],"relativePath":"js/异步.md","filePath":"js/异步.md"}'),p={name:"js/异步.md"};function e(h,s,t,k,r,E){return n(),a("div",null,s[0]||(s[0]=[l("",24)]))}const c=i(p,[["render",e]]);export{g as __pageData,c as default};

@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ag as l}from"./chunks/framework.Bw-5EFTY.js";const o=JSON.parse('{"title":"跨域","description":"","frontmatter":{},"headers":[],"relativePath":"others/跨域.md","filePath":"others/跨域.md"}'),e={name:"others/跨域.md"};function t(p,s,h,k,r,E){return n(),a("div",null,s[0]||(s[0]=[l("",28)]))}const c=i(e,[["render",t]]);export{o as __pageData,c as default};

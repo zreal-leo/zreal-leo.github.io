@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ag as l}from"./chunks/framework.Bw-5EFTY.js";const g=JSON.parse('{"title":"继承","description":"","frontmatter":{},"headers":[],"relativePath":"js/继承.md","filePath":"js/继承.md"}'),p={name:"js/继承.md"};function h(t,s,e,k,r,E){return n(),a("div",null,s[0]||(s[0]=[l("",45)]))}const y=i(p,[["render",h]]);export{g as __pageData,y as default};

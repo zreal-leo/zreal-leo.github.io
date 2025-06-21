@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ag as l}from"./chunks/framework.Bw-5EFTY.js";const g=JSON.parse('{"title":"event loop","description":"","frontmatter":{},"headers":[],"relativePath":"js/任务队列.md","filePath":"js/任务队列.md"}'),p={name:"js/任务队列.md"};function e(h,s,t,k,r,E){return n(),a("div",null,s[0]||(s[0]=[l("",54)]))}const y=i(p,[["render",e]]);export{g as __pageData,y as default};

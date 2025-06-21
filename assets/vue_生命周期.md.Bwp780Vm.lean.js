@@ -1,0 +1,1 @@
+import{_ as a,c as i,o as e,ag as n}from"./chunks/framework.Bw-5EFTY.js";const c=JSON.parse('{"title":"生命周期","description":"","frontmatter":{},"headers":[],"relativePath":"vue/生命周期.md","filePath":"vue/生命周期.md"}'),t={name:"vue/生命周期.md"};function l(p,s,r,h,o,d){return e(),i("div",null,s[0]||(s[0]=[n("",25)]))}const u=a(t,[["render",l]]);export{c as __pageData,u as default};
