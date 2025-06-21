@@ -34,8 +34,8 @@ yarn add -D husky commitlint
 
 ```js
 module.exports = {
-  extends: ["@commitlint/config-conventional"],
-}
+  extends: ["@commitlint/config-conventional"]
+};
 ```
 
 就大功告成了，如果不出意外的话，每次 commit 之前都会进行校验
@@ -44,7 +44,7 @@ module.exports = {
 
 一个符合规范的 commit 信息应该包括三个部分 header（必填）、body(可忽略)、footer (可忽略)，具体信息可查看[文档](https://www.conventionalcommits.org/en/v1.0.0/)
 
-```git
+```shell
 <type, 必填>(<scope，可忽略>): subject(必填)
 ```
 
@@ -62,7 +62,7 @@ type 包含以下几种
 
 一个最简短的 commit 例子如下
 
-```git
+```shell
 git commit -m 'feat: 新增人员搜索功能'
 ```
 
@@ -104,31 +104,31 @@ conventional-changelog -p angular -i CHANGELOG.md -s -r 0
 
 列出所有 tag
 
-```git
+```shell
 git tag
 ```
 
 新建 tag
 
-```git
+```shell
 git tag -a v1.2.0 -m '版本信息'
 ```
 
 也可以直接使用 npm version 来更新版本 **「推荐」**
 
-```git
+```shell
 npm version 1.2.0
 ```
 
 这条指令可以直接将 package.json 中的 version 更改为 1.2.0，同时也会生成同名的 tag，还是帮你提交 commit，默认 commit 信息也为版本号，你也可以直接指定 commit 信息
 
-```git
+```shell
 npm version 1.2.0 -m '说点啥呢'
 ```
 
 将 tag 信息推到 远程，别忘了顺便把 commit 提交上去。
 
-```git
+```shell
 git push --tag
 git push
 ```
