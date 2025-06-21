@@ -24,12 +24,14 @@
     "url": "https://github.com/zreal-leo/zreal-leo.github.io/issues"
   },
   "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme",
+  "dependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.17"
+  },
   "devDependencies": {
-    "@commitlint/config-conventional": "^19.1.0",
-    "commitlint": "^19.2.1",
-    "husky": "^9.0.11",
-    "markdownlint-cli": "^0.39.0",
-    "vitepress": "1.0.1",
-    "vue": "^3.4.21"
+    "@commitlint/config-conventional": "^19.8.1",
+    "commitlint": "^19.8.1",
+    "husky": "^9.1.7",
+    "markdownlint-cli": "^0.45.0"
   }
 }
