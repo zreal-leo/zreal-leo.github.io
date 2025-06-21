@@ -17,11 +17,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 22
-          cache: pnpm
-      - run: pnpm install --no-lockfile
+          cache: npm
+      - run: npm install --no-lockfile
 
       - name: Build
-        run: pnpm run docs:build
+        run: npm run docs:build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
