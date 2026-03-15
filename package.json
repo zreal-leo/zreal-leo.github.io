@@ -11,7 +11,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "markdownlint": "markdownlint docs/* --fix",
-    "prepare": "husky install"
+    "prepare": "[ -n \"$CI\" ] || husky install"
   },
   "repository": {
     "type": "git",
