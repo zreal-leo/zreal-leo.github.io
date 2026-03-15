@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as n,ak as l}from"./chunks/framework.DX1s4SEz.js";const g=JSON.parse('{"title":"event loop","description":"","frontmatter":{},"headers":[],"relativePath":"js/任务队列.md","filePath":"js/任务队列.md"}'),p={name:"js/任务队列.md"};function h(e,s,k,t,r,E){return a(),n("div",null,[...s[0]||(s[0]=[l("",54)])])}const y=i(p,[["render",h]]);export{g as __pageData,y as default};

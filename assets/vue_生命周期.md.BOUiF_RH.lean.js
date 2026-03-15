@@ -1,0 +1,1 @@
+import{_ as a,o as i,c as e,ak as n}from"./chunks/framework.DX1s4SEz.js";const c=JSON.parse('{"title":"生命周期","description":"","frontmatter":{},"headers":[],"relativePath":"vue/生命周期.md","filePath":"vue/生命周期.md"}'),l={name:"vue/生命周期.md"};function t(p,s,r,h,k,d){return i(),e("div",null,[...s[0]||(s[0]=[n("",25)])])}const b=a(l,[["render",t]]);export{c as __pageData,b as default};

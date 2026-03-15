@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as n,ak as l}from"./chunks/framework.DX1s4SEz.js";const g=JSON.parse('{"title":"异步","description":"","frontmatter":{},"headers":[],"relativePath":"js/异步.md","filePath":"js/异步.md"}'),p={name:"js/异步.md"};function h(e,s,k,t,r,E){return a(),n("div",null,[...s[0]||(s[0]=[l("",24)])])}const c=i(p,[["render",h]]);export{g as __pageData,c as default};
