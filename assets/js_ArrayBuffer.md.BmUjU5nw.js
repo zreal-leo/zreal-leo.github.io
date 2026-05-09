@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as t}from"./chunks/framework.C-WF5q-n.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"js/ArrayBuffer.md","filePath":"js/ArrayBuffer.md"}'),a={name:"js/ArrayBuffer.md"};function s(o,f,c,n,p,_){return r(),t("div")}const m=e(a,[["render",s]]);export{i as __pageData,m as default};
