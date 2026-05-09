@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/zreal-leo/zreal-leo.github.io#readme",
   "dependencies": {
-    "vitepress": "2.0.0-alpha.16",
+    "vitepress": "2.0.0-alpha.17",
     "vue": "^3.5.30"
   },
   "devDependencies": {
@@ -33,5 +33,6 @@
     "commitlint": "^20.4.4",
     "husky": "^9.1.7",
     "markdownlint-cli": "^0.48.0"
-  }
+  },
+  "packageManager": "pnpm@11.0.9"
 }
